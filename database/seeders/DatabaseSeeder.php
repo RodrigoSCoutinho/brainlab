@@ -38,6 +38,16 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
+        // Student account
+        User::firstOrCreate(
+            ['email' => 'aluno@brainlab.com'],
+            [
+                'name'     => 'Aluno Teste',
+                'password' => Hash::make('password'),
+                'role'     => 'student',
+            ]
+        );
+
         // Portuguese language questions for the subject bank
         $this->call(PortugueseLanguageQuestionsSeeder::class);
 
