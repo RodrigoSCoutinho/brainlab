@@ -82,6 +82,35 @@
         </div>
     </div>
 
+    {{-- Performance by subject --}}
+    <div class="card">
+        <div class="card__header"><i class="fa-solid fa-chart-simple"></i> Desempenho por Disciplina</div>
+
+        @if(empty($subjectStats))
+            <div class="empty-state">
+                <div class="empty-state__icon"><i class="fa-solid fa-chart-simple"></i></div>
+                <div class="empty-state__text">Responda simulados para ver seu desempenho por disciplina.</div>
+            </div>
+        @else
+            <div class="subject-stats">
+                @foreach($subjectStats as $subject => $data)
+                    @php
+                        $barClass = $data['percentage'] >= 70 ? 'high' : ($data['percentage'] >= 50 ? 'mid' : 'low');
+                    @endphp
+                    <div class="subject-stats__row">
+                        <div class="subject-stats__label">
+                            <span>{{ $subject }}</span>
+                            <span class="text-muted">{{ $data['correct'] }}/{{ $data['total'] }} ({{ $data['percentage'] }}%)</span>
+                        </div>
+                        <div class="subject-stats__bar">
+                            <div class="subject-stats__fill subject-stats__fill--{{ $barClass }}" style="width: {{ $data['percentage'] }}%;"></div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+    </div>
+
     {{-- Announcements (students see these) --}}
     @if($announcements->isNotEmpty())
     <div class="card">
