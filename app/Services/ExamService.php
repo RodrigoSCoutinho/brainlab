@@ -115,4 +115,33 @@ class ExamService
             'total_questions_answered' => $totalQuestions,
         ];
     }
+
+    /**
+     * Percentage of correct answers per subject, across all of the
+     * user's finished exams, used for the per-discipline breakdown
+     * shown on the dashboard.
+     */
+    public function getUserSubjectStats(User $user): array
+    {
+        $answers = ExamAnswer::whereHas('exam', function ($q) use ($user) {
+                $q->where('user_id', $user->id)->whereNotNull('finished_at');
+            })
+            ->with('question')
+            ->get();
+
+        return $answers
+            ->groupBy(fn ($answer) => $answer->question->subject)
+            ->map(function ($group) {
+                $total = $group->count();
+                $correct = $group->where('is_correct', true)->count();
+
+                return [
+                    'total' => $total,
+                    'correct' => $correct,
+                    'percentage' => $total > 0 ? round(($correct / $total) * 100, 1) : 0,
+                ];
+            })
+            ->sortByDesc('percentage')
+            ->toArray();
+    }
 }
