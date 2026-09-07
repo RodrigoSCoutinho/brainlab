@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
         User::firstOrCreate(
             ['email' => 'aluno@brainlab.com'],
             [
-                'name'     => 'Aluno Teste',
+                'name'     => 'Rodrigo',
                 'password' => Hash::make('password'),
                 'role'     => 'student',
             ]

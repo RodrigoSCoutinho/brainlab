@@ -119,7 +119,20 @@
                 <a href="{{ route('dashboard') }}">Dashboard</a>
                 <span>&middot;</span>
                 <a href="{{ route('videos.index') }}">Vídeos</a>
+                <span>&middot;</span>
+                <a href="{{ url('/design-system') }}">Design System</a>
             </div>
+
+            <div class="app-footer__info">
+                <span><strong>Framework:</strong> Laravel 9.19 (PHP 8.0.2+)</span>
+                <span>&middot;</span>
+                <span><strong>Banco de dados:</strong> MySQL 8.0 (Docker)</span>
+                <span>&middot;</span>
+                <span><strong>Build:</strong> Vite 4</span>
+                <span>&middot;</span>
+                <span><strong>Responsável:</strong> Rodrigo Coutinho</span>
+            </div>
+
         </div>
     </footer>
 

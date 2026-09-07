@@ -15,6 +15,10 @@ Route::get('/', function () {
     return auth()->check() ? redirect('/dashboard') : view('landing');
 });
 
+Route::get('/design-system', function () {
+    return view('design-system');
+});
+
 Route::get('/checkout/{plan}', function (string $plan) {
     $plans = [
         'pro' => [
