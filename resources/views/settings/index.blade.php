@@ -63,6 +63,31 @@
         </form>
     </div>
 
+    {{-- Theme picker --}}
+    <div class="card" style="margin-bottom: 1.5rem;">
+        <div class="card__header"><i class="fa-solid fa-swatchbook"></i> Tema da Interface</div>
+        <p class="text-muted" style="font-size: 0.9rem; margin-bottom: 1rem;">
+            Escolha a aparência da plataforma. A preferência é salva apenas neste navegador.
+        </p>
+        <div class="theme-options">
+            <label class="theme-option">
+                <input type="radio" name="theme" value="light">
+                <span class="theme-option__swatch theme-option__swatch--light"></span>
+                <span>Padrão</span>
+            </label>
+            <label class="theme-option">
+                <input type="radio" name="theme" value="dark">
+                <span class="theme-option__swatch theme-option__swatch--dark"></span>
+                <span>Escuro</span>
+            </label>
+            <label class="theme-option">
+                <input type="radio" name="theme" value="ava">
+                <span class="theme-option__swatch theme-option__swatch--ava"></span>
+                <span>AVA</span>
+            </label>
+        </div>
+    </div>
+
     {{-- Password form --}}
     <div class="card">
         <div class="card__header">Alterar Senha</div>
