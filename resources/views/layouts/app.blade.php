@@ -63,7 +63,7 @@
 
         <div class="ava-sidebar__footer">
             <button type="button" class="a11y-trigger" title="Acessibilidade"><i class="fa-solid fa-universal-access"></i> Acessibilidade</button>
-            <a href="#" title="Ajuda"><i class="fa-solid fa-circle-question"></i> Ajuda</a>
+            <button type="button" class="help-trigger" title="Ajuda"><i class="fa-solid fa-circle-question"></i> Ajuda</button>
             <a href="{{ route('settings.index') }}" title="Gerenciar perfil"><i class="fa-solid fa-circle-user"></i> Meu Perfil</a>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
@@ -115,6 +115,11 @@
             {{-- Accessibility panel trigger --}}
             <button class="theme-toggle a11y-trigger" aria-label="Acessibilidade" title="Acessibilidade">
                 <i class="fa-solid fa-universal-access"></i>
+            </button>
+
+            {{-- Help panel trigger --}}
+            <button class="theme-toggle help-trigger" aria-label="Ajuda" title="Ajuda">
+                <i class="fa-solid fa-circle-question"></i>
             </button>
 
             {{-- Dark mode toggle --}}
@@ -176,6 +181,43 @@
         </div>
     </div>
     <div id="vlibrasWrapper"></div>
+
+    {{-- Help panel (available regardless of theme) --}}
+    <div class="help-panel" id="helpPanel" hidden>
+        <div class="help-panel__header">
+            <span><i class="fa-solid fa-circle-question"></i> Ajuda</span>
+            <button type="button" id="helpClose" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="help-panel__body">
+            <div class="help-panel__section-title">Central de Ajuda</div>
+
+            <details class="help-faq">
+                <summary>Como funciona o modo prática?</summary>
+                <p>No modo prática você responde uma questão de múltipla escolha por vez e recebe feedback imediato, sem cronômetro. Ideal para estudar um assunto específico no seu próprio ritmo.</p>
+            </details>
+            <details class="help-faq">
+                <summary>Como funciona o simulado cronometrado?</summary>
+                <p>O simulado reúne várias questões aleatórias com um cronômetro regressivo, reproduzindo as condições da prova real. Ao final, você recebe a correção automática e pode revisar o gabarito.</p>
+            </details>
+            <details class="help-faq">
+                <summary>Como funciona a correção de redação?</summary>
+                <p>Você envia sua redação pela plataforma e ela fica disponível para o professor corrigir, com nota por competência (0 a 200 cada) e comentários em trechos específicos do texto.</p>
+            </details>
+            <details class="help-faq">
+                <summary>Esqueci minha senha, o que faço?</summary>
+                <p>No momento, a recuperação de senha não está disponível automaticamente. Entre em contato pelo e-mail abaixo.</p>
+            </details>
+
+            <div class="help-panel__section-title">Contato</div>
+            <a href="mailto:suporte@brainlab.com" class="help-panel__contact">
+                <i class="fa-solid fa-envelope"></i> suporte@brainlab.com
+            </a>
+
+            <p class="help-panel__disclaimer">
+                O BrainLab é um projeto acadêmico independente (TCC), desenvolvido para fins educacionais. Não é um sistema oficial do IFRN.
+            </p>
+        </div>
+    </div>
 
     {{-- Toast notifications --}}
     @if(session('success'))
@@ -377,6 +419,20 @@
                     applyState(state);
                 });
             });
+        })();
+
+        // === Help panel ===
+        (function() {
+            const panel = document.getElementById('helpPanel');
+            if (!panel) return;
+
+            document.querySelectorAll('.help-trigger').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    panel.hidden = !panel.hidden;
+                });
+            });
+            const closeBtn = document.getElementById('helpClose');
+            if (closeBtn) closeBtn.addEventListener('click', function() { panel.hidden = true; });
         })();
 
         // === Page progress bar ===
