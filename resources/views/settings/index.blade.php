@@ -13,7 +13,7 @@
     <div class="card" style="margin-bottom: 1.5rem;">
         <div class="card__header">Sua conta</div>
         <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--color-primary); display:flex; align-items:center; justify-content:center; font-size: 1.5rem; color: #fff;">
+            <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--ifrn-green); display:flex; align-items:center; justify-content:center; font-size: 1.5rem; color: #fff;">
                 <i class="fa-solid fa-user"></i>
             </div>
             <div>
