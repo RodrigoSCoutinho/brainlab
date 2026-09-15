@@ -5,12 +5,19 @@
 @section('content')
 <div class="container">
     <div class="page-header">
-        <h1><i class="fa-solid fa-bullseye"></i> Resultado</h1>
+        <div>
+            <h1><i class="fa-solid fa-bullseye"></i> Resultado</h1>
+        </div>
+        <div class="hearts-row" title="Vidas restantes">
+            @for($i = 1; $i <= \App\Services\GamificationService::STARTING_HEARTS; $i++)
+                <i class="fa-solid fa-heart {{ $i <= $hearts ? 'hearts-row__heart--full' : 'hearts-row__heart--empty' }}"></i>
+            @endfor
+        </div>
     </div>
 
     <div class="feedback {{ $isCorrect ? 'feedback--correct' : 'feedback--wrong' }}">
         @if($isCorrect)
-            <i class="fa-solid fa-circle-check"></i> Resposta correta! Muito bem!
+            <i class="fa-solid fa-circle-check"></i> Resposta correta! Muito bem! <span class="xp-gained">+{{ $xpGained }} XP</span>
         @else
             <i class="fa-solid fa-circle-xmark"></i> Resposta incorreta. A correta era: <strong>{{ strtoupper($question->correct_option) }}</strong>
         @endif

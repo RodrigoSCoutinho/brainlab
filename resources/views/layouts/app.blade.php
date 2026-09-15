@@ -46,6 +46,7 @@
             <a href="{{ route('exam.index') }}" class="{{ request()->routeIs('exam.*') ? 'active' : '' }}"><i class="fa-solid fa-clipboard-check"></i> Simulado</a>
             <a href="{{ route('essay.index') }}" class="{{ request()->routeIs('essay.*') ? 'active' : '' }}"><i class="fa-solid fa-pen-fancy"></i> Redações</a>
             <a href="{{ route('videos.index') }}" class="{{ request()->routeIs('videos.*') ? 'active' : '' }}"><i class="fa-solid fa-play-circle"></i> Vídeos</a>
+            <a href="{{ route('gamification.index') }}" class="{{ request()->routeIs('gamification.*') ? 'active' : '' }}"><i class="fa-solid fa-trophy"></i> Gamificação</a>
 
             @if(Auth::user()->canTeach())
                 <div class="ava-sidebar__divider">Professor</div>
@@ -92,6 +93,7 @@
                 <li><a href="{{ route('exam.index') }}" class="{{ request()->routeIs('exam.*') ? 'active' : '' }}"><i class="fa-solid fa-clipboard-check"></i> Simulado</a></li>
                 <li><a href="{{ route('essay.index') }}" class="{{ request()->routeIs('essay.*') ? 'active' : '' }}"><i class="fa-solid fa-pen-fancy"></i> Redações</a></li>
                 <li><a href="{{ route('videos.index') }}" class="{{ request()->routeIs('videos.*') ? 'active' : '' }}"><i class="fa-solid fa-play-circle"></i> Vídeos</a></li>
+                <li><a href="{{ route('gamification.index') }}" class="{{ request()->routeIs('gamification.*') ? 'active' : '' }}"><i class="fa-solid fa-trophy"></i> Gamificação</a></li>
                 @if(Auth::user()->canTeach())
                     <li class="navbar__dropdown">
                         <a href="#" class="navbar__dropdown-toggle {{ request()->routeIs('professor.*') ? 'active' : '' }}">

@@ -9,6 +9,7 @@ use App\Http\Controllers\EssayController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\GamificationController;
 
 // ---------- Public ----------
 Route::get('/', function () {
@@ -61,6 +62,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/practice', [PracticeController::class, 'index'])->name('practice.index');
     Route::post('/practice', [PracticeController::class, 'check'])->name('practice.check');
+    Route::post('/practice/restart', [PracticeController::class, 'restart'])->name('practice.restart');
+
+    Route::get('/gamificacao', [GamificationController::class, 'index'])->name('gamification.index');
 
     Route::get('/exam', [ExamController::class, 'index'])->name('exam.index');
     Route::post('/exam', [ExamController::class, 'start'])->name('exam.start');

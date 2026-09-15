@@ -5,8 +5,15 @@
 @section('content')
 <div class="container">
     <div class="page-header">
-        <h1><i class="fa-solid fa-bullseye"></i> Modo Prática</h1>
-        <p>Responda uma questão por vez e receba feedback imediato.</p>
+        <div>
+            <h1><i class="fa-solid fa-bullseye"></i> Modo Prática</h1>
+            <p>Responda uma questão por vez e receba feedback imediato.</p>
+        </div>
+        <div class="hearts-row" title="Vidas restantes">
+            @for($i = 1; $i <= \App\Services\GamificationService::STARTING_HEARTS; $i++)
+                <i class="fa-solid fa-heart {{ $i <= $hearts ? 'hearts-row__heart--full' : 'hearts-row__heart--empty' }}"></i>
+            @endfor
+        </div>
     </div>
 
     <div class="card" style="margin-bottom: 1.5rem;">
