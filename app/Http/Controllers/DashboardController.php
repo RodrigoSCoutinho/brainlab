@@ -17,8 +17,9 @@ class DashboardController extends Controller
         $user  = Auth::user();
         $stats = $this->examService->getUserStats($user);
         $exams = $this->examService->getUserExams($user);
+        $subjectStats = $this->examService->getUserSubjectStats($user);
         $announcements = Announcement::with('author')->latest()->take(5)->get();
 
-        return view('dashboard', compact('stats', 'exams', 'announcements'));
+        return view('dashboard', compact('stats', 'exams', 'subjectStats', 'announcements'));
     }
 }

@@ -27,7 +27,15 @@
         @foreach($videos as $video)
             <div class="video-card" data-topic="{{ $video['topic'] }}">
                 <a href="https://www.youtube.com/watch?v={{ $video['youtube_id'] }}" target="_blank" rel="noopener noreferrer" class="video-card__thumb video-card__thumb--{{ $video['topic'] }}">
-                    <div class="video-card__thumb-icon">
+                    <img
+                        class="video-card__thumb-img"
+                        src="https://img.youtube.com/vi/{{ $video['youtube_id'] }}/hqdefault.jpg"
+                        alt="{{ $video['title'] }}"
+                        loading="lazy"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                        onload="if (this.naturalWidth === 120) { this.style.display='none'; this.nextElementSibling.style.display='flex'; }"
+                    >
+                    <div class="video-card__thumb-icon" style="display: none;">
                         <i class="fa-solid fa-{{ $topics[$video['topic']]['icon'] }}"></i>
                     </div>
                     <div class="video-card__play">
