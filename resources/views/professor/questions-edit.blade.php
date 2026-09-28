@@ -53,8 +53,8 @@
                 <div class="flex gap-md" style="flex-wrap: wrap;">
                     @foreach(['A', 'B', 'C', 'D'] as $opt)
                         <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-                            <input type="radio" name="correct_option" value="{{ $opt }}"
-                                   {{ old('correct_option', $question->correct_option) === $opt ? 'checked' : '' }}>
+                            <input type="radio" name="correct_option" value="{{ strtolower($opt) }}"
+                                   {{ strtolower(old('correct_option', $question->correct_option)) === strtolower($opt) ? 'checked' : '' }}>
                             Alternativa {{ $opt }}
                         </label>
                     @endforeach

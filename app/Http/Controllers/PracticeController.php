@@ -34,7 +34,7 @@ class PracticeController extends Controller
         ]);
 
         $question = \App\Models\Question::findOrFail($request->question_id);
-        $isCorrect = $request->selected_option === $question->correct_option;
+        $isCorrect = strtolower($request->selected_option) === strtolower($question->correct_option);
         $selectedSubject = $request->input('subject');
 
         return view('practice.result', compact('question', 'isCorrect', 'selectedSubject'))
