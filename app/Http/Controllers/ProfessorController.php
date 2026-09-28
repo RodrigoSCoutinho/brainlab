@@ -62,7 +62,7 @@ class ProfessorController extends Controller
             'option_b'       => ['required', 'string', 'max:500'],
             'option_c'       => ['required', 'string', 'max:500'],
             'option_d'       => ['required', 'string', 'max:500'],
-            'correct_option' => ['required', 'in:A,B,C,D'],
+            'correct_option' => ['required', 'in:a,b,c,d'],
             'subject'        => ['nullable', 'string', 'max:255'],
             'explanation'    => ['nullable', 'string'],
         ]);
@@ -86,7 +86,7 @@ class ProfessorController extends Controller
             'option_b'       => ['required', 'string', 'max:500'],
             'option_c'       => ['required', 'string', 'max:500'],
             'option_d'       => ['required', 'string', 'max:500'],
-            'correct_option' => ['required', 'in:A,B,C,D'],
+            'correct_option' => ['required', 'in:a,b,c,d'],
             'subject'        => ['nullable', 'string', 'max:255'],
             'explanation'    => ['nullable', 'string'],
         ]);

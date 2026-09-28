@@ -66,7 +66,7 @@ class ExamService
             $selected = $answers[$answer->question_id] ?? null;
 
             if ($selected) {
-                $isCorrect = $selected === $answer->question->correct_option;
+                $isCorrect = strtolower($selected) === strtolower($answer->question->correct_option);
                 if ($isCorrect) $score++;
 
                 $answer->update([
